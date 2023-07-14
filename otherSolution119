@@ -1,0 +1,16 @@
+class Solution {
+public:
+    vector<int> getRow(int rowIndex) {
+        vector<unsigned long> rowByUnsignedLong(rowIndex + 1, 1);
+        for(int i = 0; i < rowIndex; i++)
+        {
+            rowByUnsignedLong[i + 1] = rowByUnsignedLong[i] * (rowIndex - i) / (i + 1);
+        }
+        vector<int> rowByInt(rowIndex + 1, 1);
+        for(int i = 1; i < rowIndex; i++)
+        {
+            rowByInt[i] = (int)rowByUnsignedLong[i];
+        }
+        return rowByInt;
+    }
+};
