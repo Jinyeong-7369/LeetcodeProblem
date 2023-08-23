@@ -1,15 +1,20 @@
 class Solution {
 public:
     int countSegments(string s) {
+        bool haveCh = 0;
         int count = 0;
-        bool havech = 0;
         for(int i = 0; i < s.length(); i++)
         {
-            if(i > 0)
-                if(s[i - 1] != s[i] && s[i] == ' ') count++;
-                
-            if(s[i - 1] != ' ') havech = 1;
+            if(s[i] == ' ')
+            {
+                if(haveCh) count++;
+                haveCh = 0;
+            }
+            else
+            {
+                haveCh = 1;
+            }
         }
-        return count + havech;
+        return count + haveCh;
     }
 };
